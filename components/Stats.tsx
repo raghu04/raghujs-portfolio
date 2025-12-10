@@ -16,17 +16,9 @@ const Stats = () => {
       <div className="container mx-auto">
         <div className="flex flex-wrap gap-6 mx-auto max-w-[80vw] xl:max-w-none">
           {stats.map(({ num, name }, index) => (
-            <div
-              key={index}
-              className="flex flex-1 gap-4 mx-auto justify-center items-center xl:justify-start"
-            >
-              <CountUp
-                end={num}
-                duration={5}
-                delay={2}
-                className="text-4xl xl:text-6xl font-extrabold"
-              />
-              <p className="max-w-[100px]leading-snug text-white/80">{name}</p>
+            <div key={index} className="flex flex-1 gap-4 mx-auto justify-center items-center xl:justify-start">
+              <CountUp end={num} duration={5} delay={2} className="text-4xl xl:text-6xl font-extrabold" />
+              <p className="max-w-[100px] leading-snug text-white/80">{name}</p>
             </div>
           ))}
         </div>
