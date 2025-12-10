@@ -10,11 +10,11 @@ type GoogleMapProps = {
 // Wait for `window.google` to be available with a poll and timeout
 const waitForGoogle = (timeout = 10000, interval = 100): Promise<void> => {
   return new Promise((resolve, reject) => {
-    if ((window as any).google) return resolve();
+    if (window.google) return resolve();
 
     const start = Date.now();
     const id = setInterval(() => {
-      if ((window as any).google) {
+      if (window.google) {
         clearInterval(id);
         return resolve();
       }
@@ -29,8 +29,8 @@ const waitForGoogle = (timeout = 10000, interval = 100): Promise<void> => {
 
 const GoogleMap: React.FC<GoogleMapProps> = ({ lat, lng, zoom }) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstance = useRef<any>(null);
-  const markerInstance = useRef<any>(null);
+  const mapInstance = useRef<google.maps.Map | null>(null);
+  const markerInstance = useRef<google.maps.Marker | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -46,7 +46,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ lat, lng, zoom }) => {
 
       if (!mounted || !mapRef.current) return;
 
-      const google = (window as any).google;
+      const google = window.google;
 
       // Create map
       mapInstance.current = new google.maps.Map(mapRef.current, {
