@@ -36,7 +36,7 @@ const MobileNav = () => {
 
   return (
     <Sheet>
-      <SheetTrigger className="flex justify-center items-center">
+      <SheetTrigger aria-label="Open menu" className="flex justify-center items-center">
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
